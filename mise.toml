@@ -1,0 +1,27 @@
+[tools]
+python = "3.12"
+uv = "0.10.5"
+
+[tasks.init]
+description = "Initialize the environment"
+run = "uv sync"
+
+[tasks.start]
+description = "Run the API"
+run = "uv run uvicorn brk_api_experiment.app:create_app --factory --reload"
+
+[tasks.lint]
+description = "Run lint check"
+run = "uv run ruff check --fix src/ test/"
+
+[tasks.format]
+description = "Run format check"
+run = "uv run ruff format src/ test/"
+
+[tasks.types]
+description = "Run type check"
+run = "uv run pyright src/"
+
+[tasks.test]
+description = "Run tests"
+run = "uv run pytest test/"
